@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- META SECTION -->
+    <title>Joli Admin - Responsive Bootstrap Admin Template</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="/admin/favicon.ico" type="image/x-icon" />
+    <!-- END META SECTION -->
+
+    <!-- CSS INCLUDE -->
+    <link rel="stylesheet" type="text/css" id="theme" href="/admin/css/theme-default.css"/>
+
+    <!-- EOF CSS INCLUDE -->
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Dropzone   -->
+    <link href="/css/basic.css" type="text/css" rel="stylesheet" />
+    <link href="/css/dropzone.css" type="text/css" rel="stylesheet" />
+    <script src="/js/dropzone.js"></script>
+
+
+</head>
+<body>
+<!-- START PAGE CONTAINER -->
+
+    <div class="page-container page-navigation-top">
+
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+
+        <!-- START X-NAVIGATION VERTICAL -->
+        <ul class="x-navigation x-navigation-horizontal">
+            <li class="xn-logo">
+                <a href="/my-admin">SHARING</a>
+                <a href="#" class="x-navigation-control"></a>
+            </li>
+            <li class="xn-openable">
+                <a href="/index_customers"><span class="fa fa-list"></span> <span class="xn-text">Lista Portfolio</span></a>
+            </li>
+            <li class="xn-openable">
+                <a href="/customers/create"><span class="fa fa-plus-square-o"></span> <span class="xn-text">Aggiungi Portfolio</span></a>
+            </li>
+            <li class="xn-openable">
+                <a href="/index_casehistories"><span class="fa fa-list"></span> <span class="xn-text">Lista Case history</span></a>
+            </li>
+            <li class="xn-openable">
+                <a href="/casehistories/create"><span class="fa fa-plus-square-o"></span> <span class="xn-text">Aggiungi Case history</span></a>
+            </li>
+            <!-- SIGN OUT -->
+            <li class="xn-icon-button pull-right">
+                <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
+            </li>
+            <!-- END SIGN OUT -->
+        </ul>
+        <!-- END X-NAVIGATION VERTICAL -->
+
+
+        <!-- START BREADCRUMB -->
+        <ul class="breadcrumb">
+            <li><a href="/my-admin">Home</a></li>
+        
+
+    <li><a href="/index_customers">Lista Portfolio</a></li>
+    <li class="active">Aggiungi Case Portfolio</li>
+
+
+        </ul>
+        <!-- END BREADCRUMB -->
+
+        <!-- PAGE CONTENT WRAPPER -->
+        <div class="page-content-wrap">
+
+            
+<script>
+    $('div.alert').not('.alert-important').delay(3000).slideUp(300);
+    //$('#flash-overlay-modal').modal();
+
+</script>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><strong>Crea nuovo</strong> Portfolio</h3>
+        <ul class="panel-controls">
+            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+        </ul>
+    </div>
+
+    
+    <form method="POST" action="http://localhost:8888/customers" accept-charset="UTF-8" class="dropzone form-horizontal" id="my-awesome-dropzone" enctype="multipart/form-data"><input name="_token" type="hidden" value="e1Uk6eYMajvrsCXNaPjtRyB4kHjrhUbxVdL0EUXe">
+
+        <div class="panel-body">
+
+    <div class="form-group">
+        <!-- Name Form Input -->
+        <div class="form-group">
+            <label for="name" class="col-md-3 col-xs-12 control-label">Nome cliente</label>
+            <div class="col-md-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                    <input class="form-control" name="name" type="text" id="name">
+                </div>
+                <span class="help-block">Scrivere qui il nome del cliente.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">Logo</label>
+        <div class="col-md-6 col-xs-12">
+            <input type="file" multiple class="file" data-preview-file-type="any" data-show-upload="false"/>
+            <span class="help-block">Selezionare il logo del cliente. Dimensione 230 x 170 px.</span>
+        </div>
+    </div>
+
+
+    <!--- Description Field --->
+    <div class="form-group">
+        <label for="description" class="col-md-3 col-xs-12 control-label">Descrizione</label>
+        <div class="col-md-6 col-xs-12">
+            <textarea class="form-control" name="description" cols="50" rows="10" id="description"></textarea>
+            <span class="help-block">Descrizione del lavoro svolto.</span>
+        </div>
+    </div>
+
+
+    <!-- Services Form Input -->
+    <div class="form-group">
+        <label for="service_list" class="col-md-3 col-xs-12 control-label">Servizi:</label>
+        <div class="col-md-6 col-xs-12">
+            <select id="tag_list" class="form-control" multiple="multiple" name="service_list[]"><option value="1">Consulenza</option><option value="2">Brand identity</option><option value="3">Advertising</option><option value="4">Expo &amp; events</option></select>
+            <span class="help-block">Aggiungi i servizi svolti per questo cliente cliccando nel campo. Clicca sulla X per rimuoverlo.</span>
+        </div>
+    </div>
+
+
+<!--
+    <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">Servizi</label>
+        <div class="col-md-6 col-xs-12">
+            <input type="text" class="tagsinput" value="brand Identity,corporate Identity,advertising"/>
+            <span class="help-block">Aggiungi i servizi svolti per questo cliente. Clicca sulla X per rimuoverlo.</span>
+        </div>
+    </div>
+-->
+    <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">Immagini che scorrono</label>
+        <div class="col-md-6 col-xs-12">
+            <style>
+                .dropzone-previews {
+                    height: auto;
+
+                    border: dashed 3px red;
+
+                }
+                form.dropzone{
+                    border:0;
+                    background: none;
+                }
+            </style>
+
+
+            <div class="dropzone dropzone-previews clickable">
+
+                <div class="dz-message data-dz-message">
+                    <span>Clicca qui per caricare le immagini</span>
+                </div>
+
+            </div>
+
+
+            <br>
+
+            <span class="help-block">Immagini dello slider.</span>
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <!-- sito web Form Input -->
+        <div class="form-group">
+            <label for="web" class="col-md-3 col-xs-12 control-label">Sito web</label>
+            <div class="col-md-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                    <input class="form-control" name="web" type="text" id="web">
+                </div>
+                <span class="help-block">Scrivere qui il sito web del cliente.</span>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div class="panel-footer">
+    <button class="btn btn-default">Clear Form</button>
+    <!---  Field --->
+
+        <input class="btn btn-primary pull-right" type="submit" value="Aggiungi lavoro">
+</div>
+
+
+    </form>
+
+</div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+        <!-- END PAGE CONTENT WRAPPER -->
+    </div>
+    <!-- END PAGE CONTENT -->
+</div>
+<!-- END PAGE CONTAINER -->
+
+<!-- MESSAGE BOX-->
+<div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+            <div class="mb-content">
+                <p>Sei sicuro di voler uscire?</p>
+                <p>Clicca su No per restare. Clicca su Si per uscire.</p>
+            </div>
+            <div class="mb-footer">
+                <div class="pull-right">
+                    <a href="http://localhost:8888/auth/logout" class="btn btn-success btn-lg">Si</a>
+                    <button class="btn btn-default btn-lg mb-control-close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MESSAGE BOX-->
+
+<!-- START PRELOADS -->
+<audio id="audio-alert" src="/admin/audio/alert.mp3" preload="auto"></audio>
+<audio id="audio-fail" src="/admin/audio/fail.mp3" preload="auto"></audio>
+<!-- END PRELOADS -->
+
+<!-- START SCRIPTS -->
+<!-- START PLUGINS -->
+<script type="text/javascript" src="/admin/js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- END PLUGINS -->
+
+<!-- THIS PAGE PLUGINS -->
+<script type='text/javascript' src='/admin/js/plugins/icheck/icheck.min.js'></script>
+<script type="text/javascript" src="/admin/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+
+<script type="text/javascript" src="/admin/js/plugins/bootstrap/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/bootstrap/bootstrap-file-input.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/bootstrap/bootstrap-select.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+<!-- END THIS PAGE PLUGINS -->
+
+
+<!-- THIS PAGE PLUGINS -->
+
+
+<!--
+<script type="text/javascript" src="/admin/js/plugins/dropzone/dropzone.min.js"></script>
+-->
+<script type="text/javascript" src="/admin/js/plugins/fileinput/fileinput.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/filetree/jqueryFileTree.js"></script>
+<!-- END PAGE PLUGINS -->
+
+
+<!-- START TEMPLATE -->
+
+
+<script type="text/javascript" src="/admin/js/plugins.js"></script>
+<script type="text/javascript" src="/admin/js/actions.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/js/select2.min.js"></script>
+
+
+<!-- END TEMPLATE -->
+<!-- END SCRIPTS -->
+<script>
+$('#tag_list').select2({
+    placeholder: 'Scegli i servizi'
+});
+
+
+
+
+
+Dropzone.options.myAwesomeDropzone = { // The camelized version of the ID of the form element
+
+    // The configuration we've talked about above
+    autoProcessQueue: false,
+    uploadMultiple: true,
+    parallelUploads: 100,
+    maxFiles: 100,
+    //previewsContainer: "#previews", // Define the container to display the previews
+    previewsContainer: ".dropzone-previews",
+    // You probably don't want the whole body
+    // to be clickable to select files
+    clickable: ".clickable",
+
+    addRemoveLinks: true,
+
+    // The setting up of the dropzone
+    init: function() {
+        //alert('ciao!');
+        var myDropzone = this;
+
+        // First change the button to actually tell Dropzone to process the queue.
+        this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+
+                // Make sure that the form isn't actually being sent.
+            e.preventDefault();
+            e.stopPropagation();
+            myDropzone.processQueue();
+        });
+
+        // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+        // of the sending event because uploadMultiple is set to true.
+        this.on("sendingmultiple", function() {
+            // Gets triggered when the form is actually being sent.
+            // Hide the success button or the complete form.
+        });
+        this.on("successmultiple", function(files, response) {
+            // Gets triggered when the files have successfully been sent.
+            // Redirect user or notify of success.
+        });
+        this.on("errormultiple", function(files, response) {
+            // Gets triggered when there was an error sending the files.
+            // Maybe show form again, and notify user of error
+        });
+        /*
+        this.on("addedfile", function(file) {
+
+            // Create the remove button
+            var removeButton = Dropzone.createElement("<button>Elimina il file</button>");
+
+
+            // Capture the Dropzone instance as closure.
+            var _this = this;
+
+            // Listen to the click event
+            removeButton.addEventListener("click", function(e) {
+                // Make sure the button click doesn't submit the form:
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Remove the file preview.
+                _this.removeFile(file);
+                // If you want to the delete the file on the server as well,
+                // you can do the AJAX request here.
+            });
+
+            // Add the button to the file preview element.
+            file.previewElement.appendChild(removeButton);
+        });
+
+*/
+
+    }
+
+}
+
+
+
+
+</script>
+</body>
+</html>
